@@ -5,6 +5,8 @@
  */
 package clienttftp;
 
+import java.net.InetAddress;
+
 /**
  *
  * @author markk
@@ -15,6 +17,13 @@ public Client(){
 
 }
 
-public sendFile(InetAddress addr, String )
+public int receiveFile(InetAddress addr, String nomFichierDistant,String nomFichierLocal){
+    return 0;
+
+}
+
+public int sendFile(InetAddress addr,String nomFichierLocal){
+
+}
     
 }
