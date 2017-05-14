@@ -6,9 +6,14 @@
 package clienttftp;
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 
 /**
@@ -23,9 +28,15 @@ private byte receiveBuffer[];
 private byte[] donneesFichier;
 private int serverPort = 69;
 private InetAddress serverAddress;
+private InetAddress clientAdress;
+private DatagramSocket portCom;
     
-public Client(){
-
+public Client(String clientAdress){
+    try {
+        this.clientAdress = InetAddress.getByName(clientAdress);
+    } catch (UnknownHostException e) {
+        e.printStackTrace();
+    }
 }
 
 public int receiveFile(String addr,int port, String nomFichierDistant,String nomFichierLocal) throws Exception{
@@ -35,15 +46,27 @@ public int receiveFile(String addr,int port, String nomFichierDistant,String nom
     DatagramPacket ACK;
     FileOutputStream file;
     
-    DatagramSocket portCom = new DatagramSocket();
+    portCom = new DatagramSocket(port);
      serverAddress = InetAddress.getByName(addr);
     return 0;
 
 }
 
 public int sendFile(InetAddress addr,int port,String nomFichierLocal){
-    
-    
+    String s="";
+    byte[] data = new byte[1024];
+    Path path = Paths.get(nomFichierLocal,s);
+    try {
+        data = Files.readAllBytes(path);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    DatagramPacket dp = new DatagramPacket(data,data.length, serverAddress, serverPort);
+    try {
+        portCom.send(dp);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
     return 0;
 
 }
