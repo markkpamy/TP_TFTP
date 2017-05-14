@@ -11,6 +11,8 @@ import javafx.scene.control.TextField;
  */
 public class ClientController {
 
+    private ClientTFTP app;
+
     @FXML
     private Button send;
 
@@ -40,4 +42,12 @@ public class ClientController {
         System.out.println(adress.getText()+" "+port.getText());
     }
 
+    public void setApp(ClientTFTP app) {
+        this.app = app;
+    }
+
+    @FXML
+    private void chooseFile(){
+        this.app.choose();
+    }
 }

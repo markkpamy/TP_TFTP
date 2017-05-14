@@ -27,6 +27,7 @@
                 <TableColumn prefWidth="75.0" text="C2" />
               </columns>
             </TableView>
+            <Button layoutX="267.0" layoutY="170.0" mnemonicParsing="false" onAction="#chooseFile" text="Choisir un fichier" />
          </children>
       </Pane>
    </center>

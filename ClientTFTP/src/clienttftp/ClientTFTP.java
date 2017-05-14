@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -39,7 +40,6 @@ public class ClientTFTP extends Application {
      */
     public static void main(String[] args) {
         launch(args);
-        Client client = new Client("127.0.0.1");
     }
 
     public void initWindow()
@@ -50,6 +50,9 @@ public class ClientTFTP extends Application {
             loader.setLocation(ClientTFTP.class.getResource("View.fxml"));
             pane = loader.load();
 
+            ClientController controller =new ClientController();
+            controller = loader.getController();
+            controller.setApp(this);
             //Affiche sur l application
             Scene scene = new Scene(pane);
             primaryStage.setScene(scene);
@@ -58,6 +61,14 @@ public class ClientTFTP extends Application {
         } catch (IOException e){
             e.printStackTrace();
         }
+    }
+
+    public void choose()
+    {
+        System.out.println("Dans choose");
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.showOpenDialog(primaryStage);
     }
     
 }
