@@ -71,12 +71,13 @@ public class ClientTFTP extends Application {
 
         FileChooser fileChooser = new FileChooser();
         File selectedFile = fileChooser.showOpenDialog(null);
-        String path="" +
-                "";
+        String path="";
+        String name="";
         if(selectedFile != null){
             path = selectedFile.getAbsolutePath();
+            name = selectedFile.getName();
         }
-        controller.setPath(path);
+        controller.setFile(path,name);
     }
     
 }
