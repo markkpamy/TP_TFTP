@@ -31,6 +31,7 @@ public class ClientController {
     private TextField port;
 
     private Client client;
+    private String fileName;
 
     public ClientController() {
     }
@@ -46,8 +47,8 @@ public class ClientController {
         client = new Client();
         String adr = adress.getText();
         String po = port.getText();
-
-        System.out.println(adress.getText()+" "+port.getText());
+        int por = Integer.parseInt(po);
+        client.sendFile(path,fileName,fileName,adr,por);
     }
 
     public void setApp(ClientTFTP app) {
@@ -60,6 +61,8 @@ public class ClientController {
     }
 
     public void setFile(String path, String name) {
+        this.path = path;
+        this.fileName = name;
         this.pathField.setText(path);
         this.nameField.setText(name);
     }
