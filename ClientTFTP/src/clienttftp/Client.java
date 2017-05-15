@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-pACKage clienttftp;
+
+import java.net.DatagramPacket;pACKage clienttftp;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -57,8 +58,8 @@ public int receiveFile(String addr,int port, String nomFichierDistant,String nom
 }
 
 public int sendFile(String p_path, String p_nomFichier, String p_nomDistant, String p_adresse, int p_port){
-                DatagramPACKet WRQ;
-		DatagramPACKet ACK;
+        DatagramPacket WRQ;
+		DatagramPacket ACK;
 		FileInputStream fichier = null;
 		int i = 0, j = 0, ttl = 0;
 		
