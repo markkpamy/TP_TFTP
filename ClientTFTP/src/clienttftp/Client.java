@@ -3,14 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-pACKage clienttftp;
+package clienttftp;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.DatagramPACKet;
+
+import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -24,11 +27,11 @@ import java.nio.file.Paths;
 public class Client {
     
 private DatagramSocket socket;
-private byte sentBuffer[];
+private byte sendBuffer[];
 private byte receiveBuffer[];	
 private byte[] donneesFichier;
 private int serverPort = 69;
-private InetAddress serverAddress;
+private InetAddress serverAddressIp;
 private InetAddress clientAdress;
 private DatagramSocket portCom;
     
@@ -45,56 +48,59 @@ public Client(){
 
 public int receiveFile(String addr,int port, String nomFichierDistant,String nomFichierLocal) throws Exception{
     
-    DatagramPACKet RRQ;
-    DatagramPACKet DATA;
-    DatagramPACKet ACK;
+    DatagramPacket RRQ;
+    DatagramPacket DATA;
+    DatagramPacket ACK;
     FileOutputStream file;
     
     portCom = new DatagramSocket(port);
-    serverAddress = InetAddress.getByName(addr);
+    serverAddressIp = InetAddress.getByName(addr);
     return 0;
 
 }
 
-public int sendFile(String p_path, String p_nomFichier, String p_nomDistant, String p_adresse, int p_port){
-                DatagramPACKet WRQ;
-		DatagramPACKet ACK;
+public int sendFile(String chemin, String filename, String remoteName, String serverAddress, int portServer){
+                DatagramPacket WRQ;
+		DatagramPacket ACK;
 		FileInputStream fichier = null;
 		int i = 0, j = 0, ttl = 0;
 		
 		try {
 			//Ouverture socket
-			serverAddress = InetAddress.getByName(p_adresse);
+			serverAddressIp = InetAddress.getByName(serverAddress);
 			socket = new DatagramSocket();
 
 			//Envoi du WRQ
-			sendBuffer = RRQWRQ(p_nomDistant, 2);
-			WRQ = new DatagramPACKet(sendBuffer, sendBuffer.length, serverAddress, p_port);
+			sendBuffer = RRQWRQ(remoteName, 2);
+			WRQ = new DatagramPacket(sendBuffer, sendBuffer.length, serverAddressIp, portServer);
 			socket.send(WRQ);
 
 			//Reception ACK
-			bufferReception = new byte[4];
-			ACK = new DatagramPACKet(bufferReception, bufferReception.length);
+			receiveBuffer = new byte[4];
+			ACK = new DatagramPacket(receiveBuffer, receiveBuffer.length);
 			socket.receive(ACK);
 
 			//Si c'est un ACK, on peut envoyer le fichier
-			if(bufferReception[1] == Commun.TypePaquet.ACK.code)
+			if(receiveBuffer[1] == 4)
 			{
-				portServeur = ACK.getPort();
-				vue.getTxtInfoArea().append("Serveur - "+serverAddress+":"+portServeur+"\n");
-				vue.repaint();
+				serverPort = ACK.getPort();
+				//vue.getTxtInfoArea().append("Serveur - "+serverAddress+":"+serverPort+"\n");
+				//vue.repaint();
+                                System.out.println("Serveur - "+serverAddress+":"+serverPort+"\n");
 				sendBuffer = new byte[516];
 				donneesFichier = new byte[512];	
 				
 				//Ouverture du fichier
 				try{
-					fichier = new FileInputStream(p_path+"/"+p_nomFichier);
-					vue.getTxtInfoArea().append("Ouverture du fichier réussi\n");
-					vue.repaint();
+					fichier = new FileInputStream(chemin+"/"+filename);
+                                        System.out.println("Ouverture du fichier réussi\n");
+					//vue.getTxtInfoArea().append("Ouverture du fichier réussi\n");
+					//vue.repaint();
 				}
 				catch (FileNotFoundException e) //Fichier non trouvé ou accès refusé.
 				{
-					vue.getTxtInfoArea().append("Erreur -1 : Echec de l'ouverture du fichier\n");
+					//vue.getTxtInfoArea().append("Erreur -1 : Echec de l'ouverture du fichier\n");
+                                        System.out.println("Erreur -1 : Echec de l'ouverture du fichier\n");
 					return -1;
 				}
 
@@ -102,7 +108,7 @@ public int sendFile(String p_path, String p_nomFichier, String p_nomDistant, Str
 				while(fichier.read(donneesFichier)>0)
 				{
 					sendBuffer[0] = (byte) 0;
-					sendBuffer[1] = (byte) Commun.TypePaquet.DATA.code;
+					sendBuffer[1] = (byte) 3;
 					sendBuffer[2] = (byte) j;
 					sendBuffer[3] = (byte) (i+1);
 					
@@ -114,22 +120,23 @@ public int sendFile(String p_path, String p_nomFichier, String p_nomDistant, Str
 					//Tant que l'ACK n'est pas le bon en envoi le paquet
 					// ou que ce n'est pas un ACK
 					int verifAck = -1;
-					DatagramPACKet donnees = new DatagramPACKet(sendBuffer, sendBuffer.length, serverAddress, portServeur);
+					DatagramPacket donnees = new DatagramPacket(sendBuffer, sendBuffer.length, serverAddressIp, serverPort);
 					while(verifAck != (i+1) 
-					|| bufferReception[1] != Commun.TypePaquet.ACK.code) {
+					|| receiveBuffer[1] != 4) {
 						//Envoi du paquet
 						socket.send(donnees);
-						bufferReception = new byte[516];
+						receiveBuffer = new byte[516];
 						//Réception ACK
-						ACK = new DatagramPACKet(bufferReception, bufferReception.length);
+						ACK = new DatagramPacket(receiveBuffer, receiveBuffer.length);
 						socket.receive(ACK);
-						verifAck = bufferReception[3];
+						verifAck = receiveBuffer[3];
 						if(verifAck < 0)
-							verifAck = 256 - Math.abs(bufferReception[3]);
+							verifAck = 256 - Math.abs(receiveBuffer[3]);
 						
 						ttl++;
 						if (ttl > 30) {
-							vue.getTxtInfoArea().append("Erreur -2 : Dépassement de délai\n");
+							//vue.getTxtInfoArea().append("Erreur -2 : Dépassement de délai\n");
+                                                        System.out.println("Erreur -2 : Dépassement de délai\n");
 							return -2;
 						}
 					}
@@ -149,36 +156,41 @@ public int sendFile(String p_path, String p_nomFichier, String p_nomDistant, Str
 				//Envoi d'un dernier paquet vide pour les fichier multiple de 512
 				sendBuffer = new byte[4];
 				sendBuffer[0] = (byte) 0;
-				sendBuffer[1] = (byte) Commun.TypePaquet.DATA.code;
+				sendBuffer[1] = (byte) 3;
 				sendBuffer[2] = (byte) j;
 				sendBuffer[3] = (byte) (i+1);
-				DatagramPACKet donneesDernierPACKet = new DatagramPACKet(sendBuffer, sendBuffer.length, serverAddress, portServeur);
+				DatagramPacket donneesDernierPACKet = new DatagramPacket(sendBuffer, sendBuffer.length, serverAddressIp, serverPort);
 				socket.send(donneesDernierPACKet);
 			}
-			else if (bufferReception[1] == Commun.TypePaquet.ERROR.code)
+			else if (receiveBuffer[1] == 5)
 			{
-				vue.getTxtInfoArea().append(
-				Commun.TypeErreurServeur.getStringFromValue(bufferReception[3]).libelle
-				+"\n");
-				return bufferReception[3];
+				//vue.getTxtInfoArea().append(
+				//Commun.TypeErreurServeur.getStringFromValue(receiveBuffer[3]).libelle
+				//+"\n");
+				return receiveBuffer[3];
 			}
-			vue.getTxtInfoArea().append("Fichier envoyé\n");
+			//vue.getTxtInfoArea().append("Fichier envoyé\n");
+                        System.out.println("Fichier envoyé\n");
 			fichier.close();
 		}
 		catch (UnknownHostException e) {
-			vue.getTxtInfoArea().append("Erreur -3 : IP indéterminée\n");
+			//vue.getTxtInfoArea().append("Erreur -3 : IP indéterminée\n");
+                        System.out.println("Erreur -3 : IP indéterminée\n");
 			return -3;
 		}
 		catch (SocketException e1) {
-			vue.getTxtInfoArea().append("Erreur -4 : Problème de création ou d'accès au socket\n");
+                    System.out.println("Erreur -4 : Problème de création ou d'accès au socket\n");
+			//vue.getTxtInfoArea().append("Erreur -4 : Problème de création ou d'accès au socket\n");
 			return -4;
 		}	
 		catch (IOException e1) {
-			vue.getTxtInfoArea().append("Erreur -5 : Problème réseau\n");
+                    System.out.println("Erreur -5 : Problème réseau\n");
+			//vue.getTxtInfoArea().append("Erreur -5 : Problème réseau\n");
 			return -5;
 		}
 		catch (Exception e) {
-			vue.getTxtInfoArea().append("Erreur -6 : Problème inconnu\n");
+                    System.out.println("Erreur -6 : Problème inconnu\n");
+			//vue.getTxtInfoArea().append("Erreur -6 : Problème inconnu\n");
 			return -6;
 		}finally {
 			socket.close();
