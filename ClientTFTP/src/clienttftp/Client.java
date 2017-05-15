@@ -38,6 +38,9 @@ public Client(String clientAdress){
         e.printStackTrace();
     }
 }
+public Client(){
+    this("localhost");
+}
 
 public int receiveFile(String addr,int port, String nomFichierDistant,String nomFichierLocal) throws Exception{
     
@@ -47,7 +50,7 @@ public int receiveFile(String addr,int port, String nomFichierDistant,String nom
     FileOutputStream file;
     
     portCom = new DatagramSocket(port);
-     serverAddress = InetAddress.getByName(addr);
+    serverAddress = InetAddress.getByName(addr);
     return 0;
 
 }
@@ -71,12 +74,29 @@ public int sendFile(InetAddress addr,int port,String nomFichierLocal){
 
 }
 
-public byte[] paquetWRQ(){
-    return null;
+public byte[] paquetWRQ(String fileName){
+                byte[] buffer = new byte[516];
+		byte opCode[] = new byte[] {0, (byte)2};
+		byte fichier[] = fileName.getBytes();
+		byte bourrage[] = new byte[] {0};
+		byte type[] = "octet".getBytes();
+		
+		int index = 0;
+		System.arraycopy(opCode, 0, buffer, index, 2);
+		index += 2;
+		System.arraycopy(fichier, 0, buffer, index, fichier.length);
+		index += fichier.length;
+		System.arraycopy(bourrage, 0, buffer, index, 1);
+		index++;
+		System.arraycopy(type, 0, buffer, index, type.length);
+		index += type.length;
+		System.arraycopy(bourrage, 0, buffer, index, 1);
+		return buffer;
 
 }
 public byte[] paquetRRQ(){
     return null;
 }
-    
+
+
 }
