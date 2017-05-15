@@ -16,6 +16,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -26,6 +27,7 @@ public class ClientTFTP extends Application {
 
     private Stage primaryStage;
     private Pane pane;
+    private ClientController controller;
     
     @Override
     public void start(Stage primaryStage) {
@@ -50,7 +52,7 @@ public class ClientTFTP extends Application {
             loader.setLocation(ClientTFTP.class.getResource("View.fxml"));
             pane = loader.load();
 
-            ClientController controller =new ClientController();
+            controller =new ClientController();
             controller = loader.getController();
             controller.setApp(this);
             //Affiche sur l application
@@ -68,7 +70,13 @@ public class ClientTFTP extends Application {
         System.out.println("Dans choose");
 
         FileChooser fileChooser = new FileChooser();
-        fileChooser.showOpenDialog(primaryStage);
+        File selectedFile = fileChooser.showOpenDialog(null);
+        String path="" +
+                "";
+        if(selectedFile != null){
+            path = selectedFile.getAbsolutePath();
+        }
+        controller.setPath(path);
     }
     
 }

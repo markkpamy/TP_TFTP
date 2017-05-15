@@ -12,6 +12,7 @@ import javafx.scene.control.TextField;
 public class ClientController {
 
     private ClientTFTP app;
+    private String path;
 
     @FXML
     private Button send;
@@ -49,5 +50,9 @@ public class ClientController {
     @FXML
     private void chooseFile(){
         this.app.choose();
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }
