@@ -33,7 +33,7 @@ private DatagramSocket portCom;
     
 public Client(){
     try {
-        this.clientAdress = InetAddress.getByName("127.0.0.1:2025");
+        this.clientAdress = InetAddress.getByName("127.0.0.1");
     } catch (UnknownHostException e) {
         e.printStackTrace();
     }
