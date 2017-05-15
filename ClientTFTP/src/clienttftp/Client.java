@@ -93,7 +93,7 @@ public int sendFile(String chemin, String filename, String remoteName, String se
 				
 				//Ouverture du fichier
 				try{
-					fichier = new FileInputStream(chemin+"/"+filename);
+					fichier = new FileInputStream(chemin);
                                         System.out.println("Ouverture du fichier réussi\n");
 					//vue.getTxtInfoArea().append("Ouverture du fichier réussi\n");
 					//vue.repaint();
