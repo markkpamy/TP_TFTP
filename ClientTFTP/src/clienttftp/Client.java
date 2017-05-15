@@ -31,9 +31,9 @@ private InetAddress serverAddress;
 private InetAddress clientAdress;
 private DatagramSocket portCom;
     
-public Client(String adress){
+public Client(String fileName){
     try {
-        this.clientAdress = InetAddress.getByName(adress);
+        this.clientAdress = InetAddress.getByName("localhost");
     } catch (UnknownHostException e) {
         e.printStackTrace();
     }
