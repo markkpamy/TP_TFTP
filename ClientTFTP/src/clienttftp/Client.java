@@ -61,8 +61,6 @@ public int receiveFile(String chemin, String filename,  String serverAddress, in
 			serverAddressIp = InetAddress.getByName(serverAddress);
 			serverPort=portServer;
                         System.out.println("");
-			//vue.getTxtInfoArea().append("Serveur - "+serverAddressIp+":"+portServer+"\n");
-			//vue.repaint();
 
 			//Envoi du RRQ
 			sendBuffer = RRQWRQ(filename, 1);
@@ -74,7 +72,7 @@ public int receiveFile(String chemin, String filename,  String serverAddress, in
 			if (file.exists())
             { //Si le fichier existe déjà 
 				//vue.getTxtInfoArea().append("Erreur -4 : Le fichier "+(p_path+p_nomLocal)+" existe déjà .\n");
-                System.out.println("");
+                System.out.println("Erreur -4 : Le fichier "+(p_path+p_nomLocal)+" existe déjà .\n");
                 return -4;
             }
 

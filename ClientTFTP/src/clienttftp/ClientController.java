@@ -47,6 +47,7 @@ public class ClientController {
     {
         client = new Client();
         try {
+            System.out.println("je suis la");
             client.receiveFile(pathField.getText(), nameField.getText(), adress.getText(), Integer.parseInt(port.getText()));
         } catch (Exception e) {
             e.printStackTrace();
