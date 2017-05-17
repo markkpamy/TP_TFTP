@@ -46,7 +46,7 @@ public Client(){
     this("localhost");
 }
 
-public int receiveFile(String chemin, String filename, String remoteName, String serverAddress, int portServer) throws Exception{
+public int receiveFile(String chemin, String filename,  String serverAddress, int portServer) throws Exception{
 
     DatagramPacket rrq;
 		DatagramPacket donnees;

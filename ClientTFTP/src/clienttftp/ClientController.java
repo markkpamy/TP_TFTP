@@ -43,6 +43,17 @@ public class ClientController {
     }
 
     @FXML
+    private void receive()
+    {
+        client = new Client();
+        try {
+            client.receiveFile(pathField.getText(), nameField.getText(), adress.getText(), Integer.parseInt(port.getText()));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
     private void send(){
         client = new Client();
         String adr = adress.getText();
