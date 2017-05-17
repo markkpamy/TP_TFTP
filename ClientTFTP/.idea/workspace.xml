@@ -57,8 +57,8 @@
       <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-323">
-              <caret line="1066" column="0" lean-forward="false" selection-start-line="1066" selection-start-column="0" selection-end-line="1066" selection-end-column="0" />
+            <state relative-caret-position="272">
+              <caret line="685" column="22" lean-forward="true" selection-start-line="685" selection-start-column="22" selection-end-line="685" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -94,6 +94,7 @@
         <option value="$PROJECT_DIR$/src/clienttftp/ClientController.java" />
         <option value="$PROJECT_DIR$/src/clienttftp/Client.java" />
         <option value="$PROJECT_DIR$/src/clienttftp/View.fxml" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
       </list>
     </option>
   </component>
@@ -639,7 +640,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15316000" />
+    <option name="totallyTimeSpent" value="15459000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -806,8 +807,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-323">
-          <caret line="1066" column="0" lean-forward="false" selection-start-line="1066" selection-start-column="0" selection-end-line="1066" selection-end-column="0" />
+        <state relative-caret-position="272">
+          <caret line="685" column="22" lean-forward="true" selection-start-line="685" selection-start-column="22" selection-end-line="685" selection-end-column="22" />
           <folding />
         </state>
       </provider>
