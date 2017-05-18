@@ -34,16 +34,18 @@ private int serverPort = 69;
 private InetAddress serverAddressIp;
 private InetAddress clientAdress;
 private DatagramSocket portCom;
+private ClientController controller;
 
-public Client(String fileName){
+public Client(String fileName,ClientController controller){
     try {
+    	this.controller=controller;
         this.clientAdress = InetAddress.getByName("localhost");
     } catch (UnknownHostException e) {
         e.printStackTrace();
     }
 }
-public Client(){
-    this("localhost");
+public Client(ClientController controller){
+    this("localhost",controller);
 }
 
 public int receiveFile(String chemin, String filename,  String serverAddress, int portServer) throws Exception{
@@ -61,8 +63,6 @@ public int receiveFile(String chemin, String filename,  String serverAddress, in
 			serverAddressIp = InetAddress.getByName(serverAddress);
 			serverPort=portServer;
                         System.out.println("");
-			//vue.getTxtInfoArea().append("Serveur - "+serverAddressIp+":"+portServer+"\n");
-			//vue.repaint();
 
 			//Envoi du RRQ
 			sendBuffer = RRQWRQ(filename, 1);
@@ -74,13 +74,14 @@ public int receiveFile(String chemin, String filename,  String serverAddress, in
 			if (file.exists())
             { //Si le fichier existe déjà 
 				//vue.getTxtInfoArea().append("Erreur -4 : Le fichier "+(p_path+p_nomLocal)+" existe déjà .\n");
-                System.out.println("");
+                System.out.println("Erreur -4 : Le fichier "+(chemin+filename)+" existe déjà .\n");
                 return -4;
             }
 
 			//Ouverture du flux
 			fichier = new FileOutputStream(chemin);
-                        System.out.println("");
+                        System.out.println("Création du fichier réussi\\n");
+                        controller.getCodeRetour().setText("Création du fichier réussi\n");
 			//vue.getTxtInfoArea().append("Création du fichier réussi\n");
 			//vue.repaint();
 
@@ -186,12 +187,12 @@ public int sendFile(String chemin, String filename, String remoteName, String se
 				try{
 					fichier = new FileInputStream(chemin);
                                         System.out.println("Ouverture du fichier réussi\n");
-					//vue.getTxtInfoArea().append("Ouverture du fichier réussi\n");
-					//vue.repaint();
+                    controller.getCodeRetour().setText("Ouverture du fichier réussi\n");
+
 				}
 				catch (FileNotFoundException e) //Fichier non trouvé ou accès refusé.
 				{
-					//vue.getTxtInfoArea().append("Erreur -1 : Echec de l'ouverture du fichier\n");
+				    controller.getCodeRetour().setText("Echec de l'ouverture du fichier\n");
                                         System.out.println("Erreur -1 : Echec de l'ouverture du fichier\n");
 					return -1;
 				}
@@ -227,7 +228,8 @@ public int sendFile(String chemin, String filename, String remoteName, String se
 
 						ttl++;
 						if (ttl > 30) {
-                                                        System.out.println("Erreur -2 : Dépassement de délai\n");
+						    controller.getCodeRetour().setText("Délai d'attente dépassé");
+						    System.out.println("Erreur -2 : Dépassement de délai\n");
 							return -2;
 						}
 					}
@@ -255,33 +257,31 @@ public int sendFile(String chemin, String filename, String remoteName, String se
 			}
 			else if (receiveBuffer[1] == 5)
 			{
-				//vue.getTxtInfoArea().append(
-				//Commun.TypeErreurServeur.getStringFromValue(receiveBuffer[3]).libelle
-				//+"\n");
+
 				return receiveBuffer[3];
 			}
-			//vue.getTxtInfoArea().append("Fichier envoyé\n");
+            controller.getCodeRetour().setText("Fichier envoyé avec succès\\n");
                         System.out.println("Fichier envoyé\n");
 			fichier.close();
 		}
 		catch (UnknownHostException e) {
-			//vue.getTxtInfoArea().append("Erreur -3 : IP indéterminée\n");
+            controller.getCodeRetour().setText("Erreur -3 : IP indéterminée\n");
                         System.out.println("Erreur -3 : IP indéterminée\n");
 			return -3;
 		}
 		catch (SocketException e1) {
                     System.out.println("Erreur -4 : Problème de création ou d'accès au socket\n");
-			//vue.getTxtInfoArea().append("Erreur -4 : Problème de création ou d'accès au socket\n");
+            controller.getCodeRetour().setText("Erreur -4 : Problème de création ou d'accès au socket\n");
 			return -4;
 		}
 		catch (IOException e1) {
                     System.out.println("Erreur -5 : Problème réseau\n");
-			//vue.getTxtInfoArea().append("Erreur -5 : Problème réseau\n");
+            controller.getCodeRetour().setText("Erreur -5 : Problème réseau\n");
 			return -5;
 		}
 		catch (Exception e) {
                     System.out.println("Erreur -6 : Problème inconnu\n");
-			//vue.getTxtInfoArea().append("Erreur -6 : Problème inconnu\n");
+            controller.getCodeRetour().setText("Erreur -6 : Problème inconnu\n");
 			return -6;
 		}finally {
 			portCom.close();
