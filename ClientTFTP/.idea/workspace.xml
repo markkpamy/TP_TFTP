@@ -1225,12 +1225,7 @@
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/src/clienttftp/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="50" column="55" lean-forward="false" selection-start-line="50" selection-start-column="55" selection-end-line="50" selection-end-column="55" />
-=======
+
     <entry file="file://$PROJECT_DIR$/src/clienttftp/ClientTFTP.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1243,29 +1238,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-17">
           <caret line="86" column="21" lean-forward="false" selection-start-line="86" selection-start-column="21" selection-end-line="86" selection-end-column="21" />
->>>>>>> bedda1ef8da18b232d1d0a851312a27cec7af8da
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/src/clienttftp/ClientController.java">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="304">
-          <caret line="58" column="5" lean-forward="false" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
-=======
-        <state relative-caret-position="226">
-          <caret line="140" column="48" lean-forward="false" selection-start-line="140" selection-start-column="48" selection-end-line="140" selection-end-column="48" />
->>>>>>> e208a07e0e2503bc3dc456e28fb1848fb9692566
-=======
     <entry file="file://$PROJECT_DIR$/src/clienttftp/Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="277">
           <caret line="259" column="74" lean-forward="false" selection-start-line="259" selection-start-column="74" selection-end-line="259" selection-end-column="74" />
->>>>>>> bedda1ef8da18b232d1d0a851312a27cec7af8da
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1424#1425#0" expanded="true" />
@@ -1276,53 +1258,6 @@
     </entry>
   </component>
   <component name="simpleUML.UMLToolWindowPlugin">
-    <General>
-      <option name="birdViewUpdateDelay" value="2000" />
-      <option name="defaultFileLocation" value="file://$PROJECT_DIR$/.." />
-    </General>
-    <Classdiagram>
-      <option name="diagramTitleFont" value="SansSerif,1,12" />
-      <option name="diagramFont" value="SansSerif,0,10" />
-      <option name="defaultFieldsExpanded" value="false" />
-      <option name="defaultContructorsExpanded" value="false" />
-      <option name="defaultMethodsExpanded" value="false" />
-      <option name="showParameters" value="true" />
-      <option name="showTooltip" value="true" />
-      <option name="showReturnValues" value="true" />
-      <option name="longModifier" value="true" />
-      <option name="implementsBehaviour" value="1" />
-      <option name="extendsBehaviour" value="1" />
-      <option name="compartmentBehaviour" value="1" />
-      <option name="interfaceBackgroundColor" value="-6494306" />
-      <option name="abstractClassBackgroundColor" value="-1580132" />
-      <option name="classBackgroundColor" value="-6508057" />
-      <option name="diagramBackgroundColor" value="-1" />
-      <option name="useAntialiasedConnectors" value="true" />
-      <option name="quickSourceLinkColor" value="-16776961" />
-      <option name="quickDiagramLinkColor" value="-8454144" />
-      <option name="drawDecorations" value="false" />
-      <option name="hideFieldList" value="" />
-      <option name="showFieldList" value="" />
-      <option name="hideConstructorList" value="" />
-      <option name="showConstructorList" value="" />
-      <option name="hideMethodList" value="" />
-      <option name="showMethodList" value="" />
-      <option name="minimumFigureSize" value="0,0" />
-    </Classdiagram>
-    <Dependencydiagram>
-      <option name="diagramTitleFont" value="SansSerif,1,12" />
-      <option name="diagramFont" value="SansSerif,0,10" />
-      <option name="diagramBackgroundColor" value="-1" />
-      <option name="useAntialiasedConnectors" value="true" />
-      <option name="packageNameCompressionLevel" value="0" />
-    </Dependencydiagram>
-    <Packagediagram>
-      <option name="diagramTitleFont" value="SansSerif,0,12" />
-      <option name="diagramFont" value="SansSerif,0,10" />
-      <option name="packageBackgroundColor" value="-4144960" />
-      <option name="diagramBackgroundColor" value="-1" />
-      <option name="useAntialiasedConnectors" value="true" />
-      <option name="packageNameCompressionLevel" value="2" />
-    </Packagediagram>
+    
   </component>
 </project>
