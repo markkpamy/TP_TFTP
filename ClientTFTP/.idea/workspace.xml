@@ -28,8 +28,13 @@
       <file leaf-file-name="ClientTFTP.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/clienttftp/ClientTFTP.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="969">
               <caret line="75" column="21" lean-forward="false" selection-start-line="75" selection-start-column="21" selection-end-line="75" selection-end-column="21" />
+=======
+            <state relative-caret-position="306">
+              <caret line="34" column="49" lean-forward="true" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
+>>>>>>> bedda1ef8da18b232d1d0a851312a27cec7af8da
               <folding />
             </state>
           </provider>
@@ -38,8 +43,13 @@
       <file leaf-file-name="ClientController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/clienttftp/ClientController.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="304">
               <caret line="58" column="5" lean-forward="false" selection-start-line="58" selection-start-column="5" selection-end-line="58" selection-end-column="5" />
+=======
+            <state relative-caret-position="-17">
+              <caret line="86" column="21" lean-forward="false" selection-start-line="86" selection-start-column="21" selection-end-line="86" selection-end-column="21" />
+>>>>>>> bedda1ef8da18b232d1d0a851312a27cec7af8da
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1424#1425#0" expanded="true" />
@@ -53,12 +63,17 @@
         <entry file="file://$PROJECT_DIR$/src/clienttftp/Client.java">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <state relative-caret-position="544">
               <caret line="50" column="55" lean-forward="false" selection-start-line="50" selection-start-column="55" selection-end-line="50" selection-end-column="55" />
 =======
             <state relative-caret-position="226">
               <caret line="140" column="48" lean-forward="false" selection-start-line="140" selection-start-column="48" selection-end-line="140" selection-end-column="48" />
 >>>>>>> e208a07e0e2503bc3dc456e28fb1848fb9692566
+=======
+            <state relative-caret-position="277">
+              <caret line="259" column="74" lean-forward="false" selection-start-line="259" selection-start-column="74" selection-end-line="259" selection-end-column="74" />
+>>>>>>> bedda1ef8da18b232d1d0a851312a27cec7af8da
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -77,15 +92,15 @@
             <state relative-caret-position="260">
               <caret line="717" column="22" lean-forward="false" selection-start-line="717" selection-start-column="22" selection-end-line="717" selection-end-column="22" />
               <folding>
-                <marker date="1495088302996" expanded="true" signature="64766:64783" ph="..." />
-                <marker date="1495088302996" expanded="true" signature="64766:64801" ph="..." />
-                <marker date="1495088302996" expanded="true" signature="64766:64814" ph="..." />
-                <marker date="1495088302996" expanded="true" signature="64766:64829" ph="..." />
-                <marker date="1495088302996" expanded="true" signature="64880:67384" ph="..." />
-                <marker date="1495088302996" expanded="true" signature="64894:65042" ph="..." />
-                <marker date="1495088302996" expanded="true" signature="65061:66603" ph="..." />
-                <marker date="1495088302996" expanded="true" signature="66627:66957" ph="..." />
-                <marker date="1495088302996" expanded="true" signature="66978:67369" ph="..." />
+                <marker date="1495088956235" expanded="true" signature="64754:64771" ph="..." />
+                <marker date="1495088956235" expanded="true" signature="64754:64789" ph="..." />
+                <marker date="1495088956235" expanded="true" signature="64754:64802" ph="..." />
+                <marker date="1495088956235" expanded="true" signature="64754:64817" ph="..." />
+                <marker date="1495088956235" expanded="true" signature="64868:67372" ph="..." />
+                <marker date="1495088956235" expanded="true" signature="64882:65030" ph="..." />
+                <marker date="1495088956235" expanded="true" signature="65049:66591" ph="..." />
+                <marker date="1495088956235" expanded="true" signature="66615:66945" ph="..." />
+                <marker date="1495088956235" expanded="true" signature="66966:67357" ph="..." />
               </folding>
 >>>>>>> e208a07e0e2503bc3dc456e28fb1848fb9692566
             </state>
@@ -134,6 +149,11 @@
         <option value="$PROJECT_DIR$/src/clienttftp/ClientTFTP.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/clienttftp/View.fxml" />
+<<<<<<< HEAD
+=======
+        <option value="$PROJECT_DIR$/src/clienttftp/ClientController.java" />
+        <option value="$PROJECT_DIR$/src/clienttftp/ClientTFTP.java" />
+>>>>>>> bedda1ef8da18b232d1d0a851312a27cec7af8da
         <option value="$PROJECT_DIR$/src/clienttftp/Client.java" />
         <option value="$PROJECT_DIR$/src/clienttftp/ClientController.java" />
       </list>
@@ -678,19 +698,27 @@
       <workItem from="1495001095038" duration="1219000" />
       <workItem from="1495002331195" duration="1065000" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1495087865467" duration="64000" />
 =======
       <workItem from="1495033287590" duration="3762000" />
 >>>>>>> e208a07e0e2503bc3dc456e28fb1848fb9692566
+=======
+      <workItem from="1495033287590" duration="4458000" />
+>>>>>>> bedda1ef8da18b232d1d0a851312a27cec7af8da
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="15999000" />
 =======
     <option name="totallyTimeSpent" value="19647000" />
 >>>>>>> e208a07e0e2503bc3dc456e28fb1848fb9692566
+=======
+    <option name="totallyTimeSpent" value="20343000" />
+>>>>>>> bedda1ef8da18b232d1d0a851312a27cec7af8da
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1191,15 +1219,15 @@
         <state relative-caret-position="260">
           <caret line="717" column="22" lean-forward="false" selection-start-line="717" selection-start-column="22" selection-end-line="717" selection-end-column="22" />
           <folding>
-            <marker date="1495088302996" expanded="true" signature="64766:64783" ph="..." />
-            <marker date="1495088302996" expanded="true" signature="64766:64801" ph="..." />
-            <marker date="1495088302996" expanded="true" signature="64766:64814" ph="..." />
-            <marker date="1495088302996" expanded="true" signature="64766:64829" ph="..." />
-            <marker date="1495088302996" expanded="true" signature="64880:67384" ph="..." />
-            <marker date="1495088302996" expanded="true" signature="64894:65042" ph="..." />
-            <marker date="1495088302996" expanded="true" signature="65061:66603" ph="..." />
-            <marker date="1495088302996" expanded="true" signature="66627:66957" ph="..." />
-            <marker date="1495088302996" expanded="true" signature="66978:67369" ph="..." />
+            <marker date="1495088956235" expanded="true" signature="64754:64771" ph="..." />
+            <marker date="1495088956235" expanded="true" signature="64754:64789" ph="..." />
+            <marker date="1495088956235" expanded="true" signature="64754:64802" ph="..." />
+            <marker date="1495088956235" expanded="true" signature="64754:64817" ph="..." />
+            <marker date="1495088956235" expanded="true" signature="64868:67372" ph="..." />
+            <marker date="1495088956235" expanded="true" signature="64882:65030" ph="..." />
+            <marker date="1495088956235" expanded="true" signature="65049:66591" ph="..." />
+            <marker date="1495088956235" expanded="true" signature="66615:66945" ph="..." />
+            <marker date="1495088956235" expanded="true" signature="66966:67357" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1224,16 +1252,32 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/clienttftp/Client.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
           <caret line="50" column="55" lean-forward="false" selection-start-line="50" selection-start-column="55" selection-end-line="50" selection-end-column="55" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/clienttftp/ClientTFTP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="34" column="49" lean-forward="true" selection-start-line="34" selection-start-column="49" selection-end-line="34" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/clienttftp/ClientController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-17">
+          <caret line="86" column="21" lean-forward="false" selection-start-line="86" selection-start-column="21" selection-end-line="86" selection-end-column="21" />
+>>>>>>> bedda1ef8da18b232d1d0a851312a27cec7af8da
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/clienttftp/ClientController.java">
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
@@ -1243,6 +1287,12 @@
         <state relative-caret-position="226">
           <caret line="140" column="48" lean-forward="false" selection-start-line="140" selection-start-column="48" selection-end-line="140" selection-end-column="48" />
 >>>>>>> e208a07e0e2503bc3dc456e28fb1848fb9692566
+=======
+    <entry file="file://$PROJECT_DIR$/src/clienttftp/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="277">
+          <caret line="259" column="74" lean-forward="false" selection-start-line="259" selection-start-column="74" selection-end-line="259" selection-end-column="74" />
+>>>>>>> bedda1ef8da18b232d1d0a851312a27cec7af8da
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1424#1425#0" expanded="true" />
