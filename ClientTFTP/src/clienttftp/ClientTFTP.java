@@ -66,7 +66,6 @@ public class ClientTFTP extends Application {
 
     public void choose()
     {
-        System.out.println("Dans choose");
 
         FileChooser fileChooser = new FileChooser();
         File selectedFile = fileChooser.showOpenDialog(null);

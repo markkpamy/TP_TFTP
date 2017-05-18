@@ -257,7 +257,7 @@ public int sendFile(String chemin, String filename, String remoteName, String se
 
 				return receiveBuffer[3];
 			}
-            controller.getCodeRetour().setText("Fichier envoyé avec succès\\n");
+            controller.getCodeRetour().setText("Fichier envoyé avec succès\n");
                         System.out.println("Fichier envoyé\n");
 			fichier.close();
 		}
