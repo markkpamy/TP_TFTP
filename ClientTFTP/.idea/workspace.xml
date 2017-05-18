@@ -25,7 +25,7 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ClientTFTP.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ClientTFTP.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/clienttftp/ClientTFTP.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-34">
@@ -57,11 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="workspace.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="691" column="41" lean-forward="false" selection-start-line="691" selection-start-column="41" selection-end-line="691" selection-end-column="41" />
+            <state relative-caret-position="158">
+              <caret line="688" column="49" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1207" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -657,12 +657,12 @@
       <workItem from="1495002331195" duration="1065000" />
       <workItem from="1495033287590" duration="3762000" />
       <workItem from="1495033287590" duration="4458000" />
-      <workItem from="1495090300820" duration="1850000" />
+      <workItem from="1495090300820" duration="1898000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22193000" />
+    <option name="totallyTimeSpent" value="22241000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1119,6 +1119,22 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/clienttftp/Client.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/clienttftp/ClientTFTP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-34">
+          <caret line="35" column="1" lean-forward="false" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/clienttftp/View.fxml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1132,24 +1148,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="691" column="41" lean-forward="false" selection-start-line="691" selection-start-column="41" selection-end-line="691" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/clienttftp/Client.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="70" column="0" lean-forward="false" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/clienttftp/ClientTFTP.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="35" column="1" lean-forward="false" selection-start-line="35" selection-start-column="1" selection-end-line="35" selection-end-column="1" />
+        <state relative-caret-position="158">
+          <caret line="688" column="49" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1207" selection-end-column="10" />
           <folding />
         </state>
       </provider>
