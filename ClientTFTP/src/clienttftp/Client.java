@@ -68,7 +68,6 @@ public int receiveFile(String chemin, String filename,  String serverAddress, in
 			sendBuffer = RRQWRQ(filename, 1);
 			rrq = new DatagramPacket(sendBuffer, sendBuffer.length, serverAddressIp, portServer);
 			portCom.send(rrq);
-
 			//Création du fichier
 			File file = new File(chemin);
 			if (file.exists())
