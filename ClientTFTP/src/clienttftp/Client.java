@@ -74,7 +74,8 @@ public int receiveFile(String chemin, String filename,  String serverAddress, in
 			if (file.exists())
             { //Si le fichier existe déjà 
 				//vue.getTxtInfoArea().append("Erreur -4 : Le fichier "+(p_path+p_nomLocal)+" existe déjà .\n");
-                System.out.println("Erreur -4 : Le fichier "+(chemin+filename)+" existe déjà .\n");
+                controller.getCodeRetour().setText("Le fichier \"+(chemin)+\" existe déjà .\n");
+                System.out.println("Erreur -4 : Le fichier "+(chemin)+" existe déjà .\n");
                 return -4;
             }
 
@@ -82,8 +83,6 @@ public int receiveFile(String chemin, String filename,  String serverAddress, in
 			fichier = new FileOutputStream(chemin);
                         System.out.println("Création du fichier réussi\\n");
                         controller.getCodeRetour().setText("Création du fichier réussi\n");
-			//vue.getTxtInfoArea().append("Création du fichier réussi\n");
-			//vue.repaint();
 
 			//Tant que le serveur envoi des données
 			while (!echangeFini)
@@ -112,37 +111,35 @@ public int receiveFile(String chemin, String filename,  String serverAddress, in
 					echangeFini = donnees.getLength() < 512;
 				}
 				else if (receiveBuffer[1] == 5)
-				{ //Sinon on retourne l'erreur que nous envoi le serveur
-                                    System.out.println("");
-					//vue.getTxtInfoArea().append(
-					//Commun.TypeErreurServeur.getStringFromValue(receiveBuffer[3]).libelle
-					//+"\n");
+				{
 					return receiveBuffer[3];
 				}
 			}
 			System.out.println("");
-			//vue.getTxtInfoArea().append("Fichier recu\n");
+			controller.getCodeRetour().setText("Fichier recu\n");
 			fichier.close();
 
 		} catch (UnknownHostException e) {
                     System.out.println("");
-			//vue.getTxtInfoArea().append("Erreur -1 : IP indéterminée\n");
+                    controller.getCodeRetour().setText("IP indéterminée\n");
 			return -1;
 		} catch (SocketException e) {
-                    System.out.println("");
-			//vue.getTxtInfoArea().append("Erreur -2 : Problème de création ou d'accès au socket\n");
+                    System.out.println("Problème de création ou d'accès au socket\n");
+                    controller.getCodeRetour().setText("Problème de création ou d'accès au socket\n");
 			return -2;
 		} catch (IOException e) {
                     System.out.println("");
-			//vue.getTxtInfoArea().append("Erreur -3 : Problème réseau\n");
+                    controller.getCodeRetour().setText("Erreur réseau\n");
 			return -3;
 		} catch (StackOverflowError e) {
                     System.out.println("");
-			//vue.getTxtInfoArea().append("Erreur -5 : Espace disque insuffisant\n");
+            controller.getCodeRetour().setText("Espace disque insuffisant\n");
+
 			return -5;
 		} catch (Exception e) {
                     System.out.println("");
-			//vue.getTxtInfoArea().append("Erreur -6 : Problème inconnu\n");
+            controller.getCodeRetour().setText("Problème inconnu\n");
+
 			return -6;
 		} finally {
 			portCom.close();
