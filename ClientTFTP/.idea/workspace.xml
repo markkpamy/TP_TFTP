@@ -54,8 +54,8 @@
       <file leaf-file-name="Client.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/clienttftp/Client.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="498">
-              <caret line="142" column="31" lean-forward="true" selection-start-line="142" selection-start-column="31" selection-end-line="142" selection-end-column="31" />
+            <state relative-caret-position="226">
+              <caret line="140" column="48" lean-forward="false" selection-start-line="140" selection-start-column="48" selection-end-line="140" selection-end-column="48" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -69,15 +69,15 @@
             <state relative-caret-position="260">
               <caret line="717" column="22" lean-forward="false" selection-start-line="717" selection-start-column="22" selection-end-line="717" selection-end-column="22" />
               <folding>
-                <marker date="1495070310486" expanded="true" signature="64764:64781" ph="..." />
-                <marker date="1495070310486" expanded="true" signature="64764:64799" ph="..." />
-                <marker date="1495070310486" expanded="true" signature="64764:64812" ph="..." />
-                <marker date="1495070310486" expanded="true" signature="64764:64827" ph="..." />
-                <marker date="1495070310486" expanded="true" signature="64878:67382" ph="..." />
-                <marker date="1495070310486" expanded="true" signature="64892:65040" ph="..." />
-                <marker date="1495070310486" expanded="true" signature="65059:66601" ph="..." />
-                <marker date="1495070310486" expanded="true" signature="66625:66955" ph="..." />
-                <marker date="1495070310486" expanded="true" signature="66976:67367" ph="..." />
+                <marker date="1495088302996" expanded="true" signature="64766:64783" ph="..." />
+                <marker date="1495088302996" expanded="true" signature="64766:64801" ph="..." />
+                <marker date="1495088302996" expanded="true" signature="64766:64814" ph="..." />
+                <marker date="1495088302996" expanded="true" signature="64766:64829" ph="..." />
+                <marker date="1495088302996" expanded="true" signature="64880:67384" ph="..." />
+                <marker date="1495088302996" expanded="true" signature="64894:65042" ph="..." />
+                <marker date="1495088302996" expanded="true" signature="65061:66603" ph="..." />
+                <marker date="1495088302996" expanded="true" signature="66627:66957" ph="..." />
+                <marker date="1495088302996" expanded="true" signature="66978:67369" ph="..." />
               </folding>
             </state>
           </provider>
@@ -675,12 +675,12 @@
       <workItem from="1494841960922" duration="218000" />
       <workItem from="1495001095038" duration="1219000" />
       <workItem from="1495002331195" duration="1065000" />
-      <workItem from="1495033287590" duration="3401000" />
+      <workItem from="1495033287590" duration="3762000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19286000" />
+    <option name="totallyTimeSpent" value="19647000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1170,15 +1170,15 @@
         <state relative-caret-position="260">
           <caret line="717" column="22" lean-forward="false" selection-start-line="717" selection-start-column="22" selection-end-line="717" selection-end-column="22" />
           <folding>
-            <marker date="1495070310486" expanded="true" signature="64764:64781" ph="..." />
-            <marker date="1495070310486" expanded="true" signature="64764:64799" ph="..." />
-            <marker date="1495070310486" expanded="true" signature="64764:64812" ph="..." />
-            <marker date="1495070310486" expanded="true" signature="64764:64827" ph="..." />
-            <marker date="1495070310486" expanded="true" signature="64878:67382" ph="..." />
-            <marker date="1495070310486" expanded="true" signature="64892:65040" ph="..." />
-            <marker date="1495070310486" expanded="true" signature="65059:66601" ph="..." />
-            <marker date="1495070310486" expanded="true" signature="66625:66955" ph="..." />
-            <marker date="1495070310486" expanded="true" signature="66976:67367" ph="..." />
+            <marker date="1495088302996" expanded="true" signature="64766:64783" ph="..." />
+            <marker date="1495088302996" expanded="true" signature="64766:64801" ph="..." />
+            <marker date="1495088302996" expanded="true" signature="64766:64814" ph="..." />
+            <marker date="1495088302996" expanded="true" signature="64766:64829" ph="..." />
+            <marker date="1495088302996" expanded="true" signature="64880:67384" ph="..." />
+            <marker date="1495088302996" expanded="true" signature="64894:65042" ph="..." />
+            <marker date="1495088302996" expanded="true" signature="65061:66603" ph="..." />
+            <marker date="1495088302996" expanded="true" signature="66627:66957" ph="..." />
+            <marker date="1495088302996" expanded="true" signature="66978:67369" ph="..." />
           </folding>
         </state>
       </provider>
@@ -1226,8 +1226,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/clienttftp/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="142" column="31" lean-forward="true" selection-start-line="142" selection-start-column="31" selection-end-line="142" selection-end-column="31" />
+        <state relative-caret-position="226">
+          <caret line="140" column="48" lean-forward="false" selection-start-line="140" selection-start-column="48" selection-end-line="140" selection-end-column="48" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
