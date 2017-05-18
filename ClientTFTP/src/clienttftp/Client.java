@@ -73,7 +73,7 @@ public int receiveFile(String chemin, String filename,  String serverAddress, in
 			File file = new File(chemin);
 			if (file.exists())
             { //Si le fichier existe déjà 
-				//vue.getTxtInfoArea().append("Erreur -4 : Le fichier "+(p_path+p_nomLocal)+" existe déjà .\n");
+
                 controller.getCodeRetour().setText("Le fichier \"+(chemin)+\" existe déjà .\n");
                 System.out.println("Erreur -4 : Le fichier "+(chemin)+" existe déjà .\n");
                 return -4;
@@ -81,7 +81,7 @@ public int receiveFile(String chemin, String filename,  String serverAddress, in
 
 			//Ouverture du flux
 			fichier = new FileOutputStream(chemin);
-                        System.out.println("Création du fichier réussi\\n");
+                        System.out.println("Création du fichier réussi\n");
                         controller.getCodeRetour().setText("Création du fichier réussi\n");
 
 			//Tant que le serveur envoi des données
@@ -174,8 +174,7 @@ public int sendFile(String chemin, String filename, String remoteName, String se
 			if(receiveBuffer[1] == 4)
 			{
 				serverPort = ACK.getPort();
-				//vue.getTxtInfoArea().append("Serveur - "+serverAddress+":"+serverPort+"\n");
-				//vue.repaint();
+
                                 System.out.println("Serveur - "+serverAddress+":"+serverPort+"\n");
 				sendBuffer = new byte[516];
 				donneesFichier = new byte[512];
