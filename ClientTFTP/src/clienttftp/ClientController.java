@@ -1,10 +1,7 @@
 package clienttftp;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 
 /**
@@ -38,36 +35,66 @@ public class ClientController {
     }
 
     @FXML
-    private void initialize()
-    {
+    private void initialize() {
 
     }
 
     @FXML
-    private void receive()
-    {
-        int retour=0;
+    private void receive() {
+        int retour = 0;
         client = new Client(this);
         try {
             System.out.println("je suis la");
-            retour =client.receiveFile(pathField.getText(), nameField.getText(), adress.getText(), Integer.parseInt(port.getText()));
-            error(retour);
-        } catch (Exception e) {
+            String adr = adress.getText();
+            String po = port.getText();
+            if (testIp(adr,po)) {
+                retour = client.receiveFile(pathField.getText(), nameField.getText(), adr, Integer.parseInt(po));
+                error(retour);
+            }
+            } catch (Exception e) {
             e.printStackTrace();
         }
 
     }
 
+    public boolean testIp(String adr, String po)
+    {
+        if(adr.equals("") || po.equals("")){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Adresse IP ou port vide");
+            alert.setContentText("Veuillez saisir une adresse IP et un port !");
+            alert.showAndWait();
+            return false;
+        }else
+            return true;
+
+
+    }
     @FXML
-    private void send(){
-        int retour=0;
+    private void send() {
+        int retour = 0;
+        getCodeRetour().clear();
         client = new Client(this);
         String adr = adress.getText();
         String po = port.getText();
-        int por = Integer.parseInt(po);
-        retour=client.sendFile(path,fileName,fileName,adr,por);
-        error(retour);
+        if(testIp(adr,po)){
 
+
+        if (pathField.getText().equals("")) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Chemin vide");
+            alert.setContentText("Veuillez saisir un chemin !");
+            alert.showAndWait();
+        } else {
+
+
+            int por = Integer.parseInt(po);
+            retour = client.sendFile(pathField.getText(), nameField.getText(), adr, por);
+            error(retour);
+            pathField.clear();
+            nameField.clear();
+        }
+        }
     }
 
     public TextArea getCodeRetour() {
@@ -77,15 +104,52 @@ public class ClientController {
     @FXML
     private TextArea codeRetour;
 
-    private void error(int i){
-        switch(i){
-            case -1: codeRetour.setText("Echec de l'ouverture du fichier");
-            case -2: codeRetour.setText("Délai d'attente dépassé");
-            case -3: codeRetour.setText("Adresse IP non déterminé");
-            case -4: codeRetour.setText("Erreur d'accès au socket");
-            case -5: codeRetour.setText("Problème d'accès réseau");
-            case -6: codeRetour.setText("Problème non identifié");
+    private void popUpAlert(String text) {
+
+    }
+
+    private void error(int i) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Erreur");
+        String msg;
+        switch (i) {
+            case -1:
+                msg = "Echec de l'ouverture du fichier";
+                codeRetour.setText(msg);
+
+                break;
+            case -2:
+                msg = "Délai d'attente dépassé";
+                codeRetour.setText(msg);
+
+                break;
+            case -3:
+                msg = "Adresse IP non déterminé";
+                codeRetour.setText(msg);
+                break;
+            case -4:
+                msg = "Erreur d'accès au socket";
+                codeRetour.setText(msg);
+                break;
+            case -5:
+                msg = "Problème d'accès réseau";
+                codeRetour.setText(msg);
+                break;
+            case -6:
+                msg = "Problème non identifié";
+                codeRetour.setText(msg);
+                break;
+            case -7:
+                msg = "Le fichier existe déjà";
+                break;
+            case -8:
+                msg = "Adresse Ip vide, Veuillez saisir une adresse IP !";
+            default:
+                msg = "";
+                break;
         }
+        alert.setContentText(msg);
+        if (!msg.equals("")) alert.showAndWait();
     }
 
     public void setApp(ClientTFTP app) {
@@ -93,13 +157,14 @@ public class ClientController {
     }
 
     @FXML
-    private void chooseFile(){
+    private void chooseFile() {
+        getCodeRetour().clear();
         this.app.choose();
     }
 
     public void setFile(String path, String name) {
-        this.path = path;
-        this.fileName = name;
+//        this.path = path;
+//        this.fileName = name;
         this.pathField.setText(path);
         this.nameField.setText(name);
     }
