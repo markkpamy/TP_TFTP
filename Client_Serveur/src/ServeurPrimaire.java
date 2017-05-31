@@ -9,7 +9,7 @@ public class ServeurPrimaire {
     public  int portEcoute;
     private ServerSocket serverSocket;
     public ServeurPrimaire(){
-        portEcoute = 1026;
+        portEcoute = 2026;
         try {
             serverSocket = new ServerSocket(portEcoute);
         } catch (IOException e) {
@@ -24,8 +24,13 @@ public class ServeurPrimaire {
             while (true)
             {
                 Socket clientSocket = serverSocket.accept();
-
                 DatagramPacket receivePacket = new DatagramPacket(buffer, buffer.length);
+                int portClient = receivePacket.getPort();
+                InetAddress address = receivePacket.getAddress();
+                ServeurHTTP serveurHTTP = new ServeurHTTP(address,clientSocket, portClient);
+                Thread thread = new Thread(serveurHTTP);
+                thread.start();
+
 
             }
         } catch (SocketException e) {
