@@ -17,7 +17,7 @@ public class Client {
     {
         try {
             adresseIp = java.net.InetAddress.getByName("localhost");
-            clientSocket = new Socket(adresseIp, 1025);
+            clientSocket = new Socket(adresseIp, 2002);
         }catch (UnknownHostException e){
             e.printStackTrace();
         } catch (IOException e) {
