@@ -52,8 +52,12 @@ public class Controler {
         int port;
         adress = adressField.getText();
         file = fileField.getText();
-        port = Integer.parseInt(portField.getText());
-
+        if(portField.isVisible()) {
+            port = Integer.parseInt(portField.getText());
+        }
+        else port=-1;
+        //web.requeteClient(adress,file,port);
+        web.requeteClient("127.0.0.1","image.jpg",-1);
     }
 
     public void setWeb(Web web) {

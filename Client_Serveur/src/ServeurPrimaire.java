@@ -21,7 +21,7 @@ public class ServeurPrimaire {
 
         byte [] buffer = new byte[BUF_SIZE];
         try {
-            while (true)
+            if (true)
             {
                 Socket clientSocket = serverSocket.accept();
                 DatagramPacket receivePacket = new DatagramPacket(buffer, buffer.length);
