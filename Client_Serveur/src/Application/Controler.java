@@ -3,15 +3,27 @@ package Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.TextFlow;
 import javafx.scene.web.WebView;
 
 /**
  * Created by Fabien on 31/05/2017.
  */
 public class Controler {
+
+    @FXML
+    TextArea headerReponseField;
+
+    @FXML
+    TextArea headerRequeteField;
+
+    @FXML
+    TextFlow textView;
+
 
     @FXML
     WebView requeteView;
@@ -36,6 +48,8 @@ public class Controler {
 
     @FXML
     ImageView imageView;
+
+
 
     private Web web;
 
@@ -68,9 +82,7 @@ public class Controler {
             port = Integer.parseInt(portField.getText());
         }
         else port=-1;
-        //web.requeteClient(adress,file,port);
-        web.requeteClient("127.0.0.1", "image.jpg",-1);
-        //setImageView("Image/Image.jpg");
+        web.requeteClient(adress,file,port);
     }
 
     public void setWeb(Web web) {
@@ -87,4 +99,18 @@ public class Controler {
         //String url = url;
         setImageView(url);
     }
+
+    public void setHeaderReponseField(TextArea headerReponseField) {
+        this.headerReponseField = headerReponseField;
+    }
+
+    public void setHeaderRequeteField(TextArea headerRequeteField) {
+        this.headerRequeteField = headerRequeteField;
+    }
+
+    public void setTextView(TextFlow textView) {
+        this.textView = textView;
+    }
+
+
 }

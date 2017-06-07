@@ -5,29 +5,43 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.web.WebView?>
+<?import javafx.scene.text.TextFlow?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controler">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="571.0" xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controler">
    <children>
-      <TabPane layoutY="51.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="349.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane layoutY="54.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="348.0" prefWidth="571.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
             <Tab text="Fichier Recu">
                <content>
-                  <ImageView fx:id="imageView" fitHeight="228.0" fitWidth="283.0" pickOnBounds="true" preserveRatio="true" />
+                  <Pane fx:id="imageContainer" prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fx:id="imageView" fitHeight="251.0" fitWidth="200.0" layoutX="23.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true" />
+                        <Label layoutX="240.0" layoutY="6.0" prefHeight="17.0" prefWidth="91.0" text="Prévisualisation" />
+                        <TextFlow fx:id="textView" layoutX="320.0" layoutY="60.0" prefHeight="200.0" prefWidth="200.0" />
+                     </children>
+                  </Pane>
                </content>
             </Tab>
             <Tab text="Headers">
                <content>
-                  <WebView fx:id="renderView" prefHeight="200.0" prefWidth="200.0" />
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="37.0" layoutY="14.0" text="Header requête" />
+                        <Label layoutX="34.0" layoutY="160.0" text="Header Réponse" />
+                        <TextArea fx:id="headerRequeteField" layoutX="34.0" layoutY="34.0" prefHeight="124.0" prefWidth="515.0" />
+                        <TextArea fx:id="headerReponseField" layoutX="34.0" layoutY="179.0" prefHeight="126.0" prefWidth="516.0" />
+                     </children>
+                  </Pane>
                </content>
             </Tab>
          </tabs>
       </TabPane>
-      <ToolBar prefHeight="58.0" prefWidth="600.0">
+      <ToolBar layoutY="-2.0" prefHeight="60.0" prefWidth="571.0">
          <items>
             <Label text="Adresse :" />
             <TextField fx:id="adressField" prefHeight="25.0" prefWidth="136.0" />
