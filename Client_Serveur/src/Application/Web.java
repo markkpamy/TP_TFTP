@@ -2,6 +2,7 @@ package Application;
 
 import Serveur.ServeurPrimaire;
 
+import java.io.File;
 import java.io.IOException;
 
 /**
@@ -25,8 +26,9 @@ public class Web {
         try {
             //this.serveurPrimaire.lancer();
             String[] recu = client.recevoir(chemin,fichier,port);
-            for(int i=0; i<recu.length; i++)
-                System.out.println(recu[i]);
+            System.out.println("fichier recu :"+recu[0]);
+            File file =
+            while(recu[0].isEmpty()){}
             controler.setImageView(recu[0]);
         } catch (IOException e) {
             e.printStackTrace();

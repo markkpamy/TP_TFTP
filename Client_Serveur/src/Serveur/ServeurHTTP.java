@@ -80,7 +80,7 @@ public class ServeurHTTP implements Runnable{
             String lastModified = "Last-Modified"+file.lastModified();
             String contentLength = "Content-Length:" +size;
             String contentType = "Content-Type:"+file.getClass().getTypeName();
-            String header = "HTTP/1.1 200 OK"+"\n"+date+"\n"+lastModified+"\n"+contentLength+"\n"+contentType+"\n\n";
+            String header = "HTTP/1.1 200 OK"+"SEPARATEUR"+date+"SEPARATEUR"+lastModified+"SEPARATEUR"+contentLength+"SEPARATEUR"+contentType+"SEPARATEUR+\n";
 
 
             System.out.println("on écrit le header");

@@ -39,8 +39,11 @@ public class Controler {
 
     private Web web;
     public Controler(){
-        Image image = new Image("C:/Users/Fabien/Documents/Projet/arar/TP_TFTP/Client_Serveur/image.jpg");
-        imageView.setImage(image);
+//        Image.widthProperty().add(imageView.getFitWidth());
+//        Image.heightProperty().add(imageView.getFitHeight());
+        //this.imageView = new ImageView(Image);
+        //imageView.setImage(new Image("Image.jpg"));
+        //imageView = new ImageView(Image);
     }
 
     @FXML
@@ -65,7 +68,8 @@ public class Controler {
         }
         else port=-1;
         //web.requeteClient(adress,file,port);
-        web.requeteClient("127.0.0.1","image.jpg",-1);
+        web.requeteClient("127.0.0.1", "image.jpg",-1);
+        //setImageView("Image/Image.jpg");
     }
 
     public void setWeb(Web web) {
@@ -74,7 +78,7 @@ public class Controler {
 
     public void setImageView(String url)
     {
-        Image image = new Image("../image.jpg");
+        Image image = new Image(url);
         imageView.setImage(image);
     }
 

@@ -35,37 +35,37 @@ public class Client {
         inFromServer = new DataInputStream(clientSocket.getInputStream());
         outToServer = new DataOutputStream(clientSocket.getOutputStream());
 
-        System.out.println("envoie de la requete");
+        //System.out.println("envoie de la requete");
         //On fait le header requete
         String requete = "GET "+adresse+"/"+fichier+" HTTP/1.1"+"\n";
-        System.out.println("requête côté client : "+requete);
+        //System.out.println("requête côté client : "+requete);
         outToServer.writeBytes(requete);
         outToServer.flush();
         //outToServer.close();
         //outToServer = new DataOutputStream(clientSocket.getOutputStream());
         //outToServer.close();
-        System.out.println("la requete a été envoyé");
+        //System.out.println("la requete a été envoyé");
 
         //Determination de l'header
         String recu = inFromServer.readLine();
         //System.out.println(recu);
 
         String[] tmp_header = recu.split("SEPARATEUR");
-        System.out.println(tmp_header.length);
-        for(int i =0; i<tmp_header.length; i++){
-            System.out.println(tmp_header[i]);
-        }
+        //System.out.println(tmp_header.length);
+//        for(int i =0; i<tmp_header.length; i++){
+//            System.out.println(tmp_header[i]);
+//        }
         String date,lastModified, contentLength,contentType;
-        date = tmp_header[0];
-        lastModified= tmp_header[1];
-        contentLength= tmp_header[2];
-        contentType= tmp_header[3];
+        date = tmp_header[1];
+        lastModified= tmp_header[2];
+        contentLength= tmp_header[3];
+        contentType= tmp_header[4];
         String header = date+"\n"+lastModified+"\n"+contentLength+"\n"+contentType+"\n";
-        System.out.println(header);
+        //System.out.println(header);
 
         //int longueur = 0;
         int longueur = Integer.parseInt(contentLength.split(":")[1]);
-        System.out.println(header);
+        //System.out.println(header);
 
         //Creation du table de byte pour la reception
         byte data[] = new byte[longueur];
@@ -79,16 +79,17 @@ public class Client {
         //Creation du fichier
         String nomFichier="image_Recu_";
         nomFichier +=fichier;
-        File file = new File(nomFichier);
+        String dossierReception = "Image/";
+        File file = new File("src/"+dossierReception+nomFichier);
         file.createNewFile();
 
         //Ecriture du contenu du fichier
         FileOutputStream fileOutputStream = new FileOutputStream(file);
         fileOutputStream.write(data);
         fileOutputStream.close();
-        String url =file.getAbsolutePath();
         //On ferme la socket du client
         clientSocket.close();
-        return new String[] {url, header};
+        //System.out.println("nom fichier" +nomFichier);
+        return new String[] {dossierReception+nomFichier, header};
     }
 }
