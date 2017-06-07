@@ -50,6 +50,8 @@ public class Web {
             String url = "file:///"+System.getProperty("user.dir")+"/src/Image/"+recu[0];
             System.out.println(url);
             controler.setImageView(url);
+            controler.setHeaderReponseField(recu[1]);
+            controler.setHeaderRequeteField(recu[2]);
 
         } catch (IOException e) {
             e.printStackTrace();

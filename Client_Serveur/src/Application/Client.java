@@ -91,6 +91,6 @@ public class Client {
         //On ferme la socket du client
         clientSocket.close();
         //System.out.println("nom fichier" +nomFichier);
-        return new String[] {nomFichier, header};
+        return new String[] {nomFichier, header,requete};
     }
 }

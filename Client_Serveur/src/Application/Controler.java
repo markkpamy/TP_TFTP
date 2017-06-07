@@ -100,12 +100,12 @@ public class Controler {
         setImageView(url);
     }
 
-    public void setHeaderReponseField(TextArea headerReponseField) {
-        this.headerReponseField = headerReponseField;
+    public void setHeaderReponseField(String s) {
+        this.headerReponseField.setText(s);
     }
 
-    public void setHeaderRequeteField(TextArea headerRequeteField) {
-        this.headerRequeteField = headerRequeteField;
+    public void setHeaderRequeteField(String s) {
+        this.headerRequeteField.setText(s);
     }
 
     public void setTextView(TextFlow textView) {
