@@ -12,7 +12,7 @@ import java.util.Date;
 /**
  * Created by Fabien on 24/05/2017.
  */
-public class ServeurHTTP implements Runnable{
+public class ServeurHTTP implements Runnable {
 
     private InetAddress clientAdress;
     private int portEcoute;
@@ -25,7 +25,6 @@ public class ServeurHTTP implements Runnable{
         this.clientSocket = clientSocket;
         this.clientPort = clientPort;
     }
-
 
 
     @Override
@@ -46,61 +45,81 @@ public class ServeurHTTP implements Runnable{
         }
     }
 
-    public void recevoir(DataInputStream infromClient, DataOutputStream outToClient)
-    {
+    public void recevoir(DataInputStream infromClient, DataOutputStream outToClient) {
         System.out.println("Dans recevoir de serveur http");
-        String[] input = new String[0];
+        String[] input = {};
         try {
             System.out.println("Dans la réception entête client");
-            String headerRequete ="";
+            String headerRequete = "";
 
             headerRequete = infromClient.readLine();
-            //outToClient.flush();
-            //infromClient.close();
             System.out.println(headerRequete);
             input = headerRequete.split(" ");
-            System.out.println(input[1]);
+
         } catch (IOException e) {
             e.printStackTrace();
+            erreur504(outToClient);
         }
+        ////SI L ENTETE CONTIENT GET ON CONTINUE SINON BAD GATEWAY
+        if (input[0].equals("GET")) {
 
-        String chemin=input[1].split("/")[1];
+            String chemin = input[1].split("/")[1];
 
-        File file = new File(chemin);
-        int size = (int) file.length();
-        System.out.println(size);
-        FileInputStream fichier;
+            ///ON CHARGE LE FICHIER
+            File file = new File(chemin);
+            int size = (int) file.length();
+            FileInputStream fichier;
+            try {
+                ///ON ECRIT LES DONNEES DU FICHIER DANS LE BUFFER
+                fichier = new FileInputStream(chemin);
+                byte buffer[] = new byte[size];
+                fichier.read(buffer);
+                fichier.close();
+
+                //ON FAIT LE HEADER REPONSE
+                Date date = new Date();
+                String lastModified = "Last-Modified" + file.lastModified();
+                String contentLength = "Content-Length:" + size;
+                String server = ("Server: " + this.clientSocket.getInetAddress());
+                String contentType = "Content-Type:" + file.getClass().getTypeName();
+                String header = "HTTP/1.1 200 OK" + "SEPARATEUR" + date + "SEPARATEUR" + lastModified + "SEPARATEUR" + server + "SEPARATEUR" + contentLength + "SEPARATEUR" + contentType + "SEPARATEUR+\n";
+
+
+                System.out.println("on écrit le header");
+                outToClient.writeBytes(header);
+                outToClient.flush();
+
+
+                System.out.println("On écrit le fichier");
+                outToClient.write(buffer);
+                outToClient.flush();
+                outToClient.close();
+                infromClient.close();
+                System.out.println("écriture du fichier finit");
+                clientSocket.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+                try {
+                    outToClient.writeBytes("HTTP/1.1 Error-404");
+                    outToClient.flush();
+                    outToClient.close();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            } catch (IOException e) {
+                erreur504(outToClient);
+                e.printStackTrace();
+            }
+        } else
+            erreur504(outToClient);
+
+    }
+
+    private void erreur504(DataOutputStream dataOutputStream) {
         try {
-            fichier = new FileInputStream(chemin);
-            System.out.println("Fichier trouvé");
-            byte buffer[] = new byte[size];
-            fichier.read(buffer);
-            fichier.close();
-            System.out.println("Ecriture dans le buffer effectué");
-            //On fait le header reponse
-            Date date = new Date();
-            String lastModified = "Last-Modified"+file.lastModified();
-            String contentLength = "Content-Length:" +size;
-            String contentType = "Content-Type:"+file.getClass().getTypeName();
-            String header = "HTTP/1.1 200 OK"+"SEPARATEUR"+date+"SEPARATEUR"+lastModified+"SEPARATEUR"+contentLength+"SEPARATEUR"+contentType+"SEPARATEUR+\n";
-
-
-            System.out.println("on écrit le header");
-            outToClient.writeBytes(header);
-            //outToClient.close();
-            outToClient.flush();
-
-
-            System.out.println("On écrit le fichier");
-            outToClient.write(buffer);
-            outToClient.flush();
-            boolean problem = false;
-            outToClient.close();
-            infromClient.close();
-            System.out.println("écriture du fichier finit");
-            clientSocket.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            dataOutputStream.writeBytes("HTTP/1.1 Error-504");
+            dataOutputStream.flush();
+            dataOutputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

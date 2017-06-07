@@ -14,51 +14,46 @@ public class Web {
 
     private Controler controler;
 
-    ServeurPrimaire serveurPrimaire;
 
     Client client;
 
     public Web(){
-        //this.serveurPrimaire = new ServeurPrimaire();
     }
 
     public void requeteClient(String chemin, String fichier, int port){
-        System.out.println("On créer le client");
-        this.client = new Client();
         String[] recu = null;
         try {
-            //this.serveurPrimaire.lancer();
+            this.client = new Client();
+
             recu = client.recevoir(chemin,fichier,port);
-            File f = new File("src/Image");
+            if(recu[0].contains("Error-404")){
+                String url = "file:///"+System.getProperty("user.dir")+"\\erreur_404.png";
+                controler.setImageView(url);
+                controler.setTextView("Le serveur ne contient pas ce fichier");
+            }else if(recu[0].contains("Error-504")){
+                String url = "file:///"+System.getProperty("user.dir")+"\\erreur_504.jpeg";
+                controler.setImageView(url);
+            }else {
+                String url = "file:///"+System.getProperty("user.dir")+"/src/Image/"+recu[0];
+                System.out.println(url);
+                controler.setImageView(url);
 
-            File[] fd = f.listFiles();
-            for(int i =0; i<fd.length; i++){
-                fd[i].getName();
             }
-            boolean tmp = false;
-//            while(!tmp){
-//                boolean vie =true;
-//                try {
-//                    controler.setImageView(recu[0]);
-//                }catch (IllegalArgumentException e){
-//                    vie = false;
-//                }
-//                System.out.println(vie);
-//                tmp = vie;
-//            }
-
-            String url = "file:///"+System.getProperty("user.dir")+"/src/Image/"+recu[0];
-            System.out.println(url);
-            controler.setImageView(url);
             controler.setHeaderReponseField(recu[1]);
             controler.setHeaderRequeteField(recu[2]);
 
+
+
         } catch (IOException e) {
+            System.out.println("Dans l'erreur");
+            String url = "file:///"+System.getProperty("user.dir")+"\\erreur_504.jpeg";
+            controler.setImageView(url);
+            controler.setHeaderRequeteField("GET "+chemin+"/"+fichier+" HTTP/1.1");
+            controler.setHeaderReponseField("Erreur 504 Bad-Gateway");
+            controler.setTextView("Impossible de se connecter aux serveurs ! \nAvez vous correctement taper l'adresse ?\nAvez vous lancer le serveur");
             e.printStackTrace();
+
         }
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
     }
     public void chargerImage(String url){
         controler.setImageView(url);

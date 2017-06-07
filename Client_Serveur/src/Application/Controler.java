@@ -22,14 +22,10 @@ public class Controler {
     TextArea headerRequeteField;
 
     @FXML
-    TextFlow textView;
+    TextArea textAreaField;
 
 
-    @FXML
-    WebView requeteView;
 
-    @FXML
-    WebView renderView;
 
     @FXML
     TextField adressField;
@@ -108,8 +104,8 @@ public class Controler {
         this.headerRequeteField.setText(s);
     }
 
-    public void setTextView(TextFlow textView) {
-        this.textView = textView;
+    public void setTextView(String s) {
+        this.textAreaField.setText(s);
     }
 
 
