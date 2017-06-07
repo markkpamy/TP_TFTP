@@ -87,9 +87,10 @@ public class Client {
         FileOutputStream fileOutputStream = new FileOutputStream(file);
         fileOutputStream.write(data);
         fileOutputStream.close();
+        System.out.println("Est ce que le fichier esxite ?" +file.exists());
         //On ferme la socket du client
         clientSocket.close();
         //System.out.println("nom fichier" +nomFichier);
-        return new String[] {dossierReception+nomFichier, header};
+        return new String[] {nomFichier, header};
     }
 }

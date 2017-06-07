@@ -5,6 +5,8 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.Socket;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.util.Date;
 
 /**
@@ -89,20 +91,18 @@ public class ServeurHTTP implements Runnable{
             outToClient.flush();
 
 
-            System.out.println("On écrite le fichier");
-            //outToClient = new DataOutputStream(clientSocket.getOutputStream());
+            System.out.println("On écrit le fichier");
             outToClient.write(buffer);
             outToClient.flush();
             boolean problem = false;
             outToClient.close();
+            infromClient.close();
             System.out.println("écriture du fichier finit");
-            //clientSocket.close();
+            clientSocket.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
     }
 }

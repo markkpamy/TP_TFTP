@@ -38,6 +38,7 @@ public class Controler {
     ImageView imageView;
 
     private Web web;
+
     public Controler(){
 //        Image.widthProperty().add(imageView.getFitWidth());
 //        Image.heightProperty().add(imageView.getFitHeight());
@@ -82,4 +83,8 @@ public class Controler {
         imageView.setImage(image);
     }
 
+    public void setUrl(String url) {
+        //String url = url;
+        setImageView(url);
+    }
 }
