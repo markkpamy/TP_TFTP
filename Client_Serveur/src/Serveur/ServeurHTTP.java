@@ -48,9 +48,9 @@ public class ServeurHTTP implements Runnable {
     public void recevoir(DataInputStream infromClient, DataOutputStream outToClient) {
         System.out.println("Dans recevoir de serveur http");
         String[] input = {};
+        String headerRequete = "";
+
         try {
-            System.out.println("Dans la réception entête client");
-            String headerRequete = "";
 
             headerRequete = infromClient.readLine();
             System.out.println(headerRequete);
@@ -81,8 +81,9 @@ public class ServeurHTTP implements Runnable {
                 String lastModified = "Last-Modified" + file.lastModified();
                 String contentLength = "Content-Length:" + size;
                 String server = ("Server: " + this.clientSocket.getInetAddress());
-                String contentType = "Content-Type:" + file.getClass().getTypeName();
-                String header = "HTTP/1.1 200 OK" + "SEPARATEUR" + date + "SEPARATEUR" + lastModified + "SEPARATEUR" + server + "SEPARATEUR" + contentLength + "SEPARATEUR" + contentType + "SEPARATEUR+\n";
+
+                String contentType = "Content-Type:"+chemin.split("\\.")[1];
+                String header = "HTTP/1.1 200 OK" + "SEPARATEUR" + date + "SEPARATEUR" + lastModified + "SEPARATEUR"  + contentLength +"SEPARATEUR"+server+ "SEPARATEUR" + contentType + "SEPARATEUR+\n";
 
 
                 System.out.println("on écrit le header");
@@ -109,6 +110,8 @@ public class ServeurHTTP implements Runnable {
             } catch (IOException e) {
                 erreur504(outToClient);
                 e.printStackTrace();
+            }catch (ArrayIndexOutOfBoundsException e){
+                erreur504(outToClient);
             }
         } else
             erreur504(outToClient);

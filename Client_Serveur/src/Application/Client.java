@@ -64,9 +64,8 @@ public class Client {
             server = tmp_header[4];
             contentType = tmp_header[5];
             String header = date + "\n" + lastModified + "\n" + contentLength + "\n" + server + "\n" + contentType + "\n";
-            //System.out.println(header);
 
-            //int longueur = 0;
+            String extension = contentType.split(":")[1];
             int longueur = Integer.parseInt(contentLength.split(":")[1]);
             //System.out.println(header);
 
@@ -82,7 +81,7 @@ public class Client {
             //Creation du fichier
             String nomFichier = "image_Recu_";
             nomFichier += fichier;
-            String dossierReception = "Image/";
+            String dossierReception = "Reception/";
             File file = new File("src/" + dossierReception + nomFichier);
             file.createNewFile();
 
@@ -90,11 +89,11 @@ public class Client {
             FileOutputStream fileOutputStream = new FileOutputStream(file);
             fileOutputStream.write(data);
             fileOutputStream.close();
-            System.out.println("Est ce que le fichier esxite ?" + file.exists());
             //On ferme la socket du client
             clientSocket.close();
-            //System.out.println("nom fichier" +nomFichier);
-            return new String[]{nomFichier, header, requete};
+            return new String[]{nomFichier, header, requete,extension};
         }
     }
+
+
 }

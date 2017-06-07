@@ -1,0 +1,12 @@
+La gestion des cookies (RFC 2019)
+Les cookies constituent un bon exemple d’utilisation des headers.
+A la base, le web est un serveur sans mémoire. Il n’y a pas de concept de session ni de mémorisation des états précédents. Cette organisation est très satisfaisante en ce qui concerne les accès aux documents mais actuellement, le succès du web fait que l’on a besoin de garder la trace des clients. Citons 3 exemples :
+1. Certains sites demandent aux clients de s’enregistrer (et éventuellement de payer) avant de pouvoir travailler avec le serveur).
+2. Le commerce électronique permet au client de remplir son panier en flânant sur le site.
+3. Les pages d’accueil qui sont personnalisées selon le client. Dans ce cas, il faut que le serveur reconnaisse le client pour lui afficher sa page personnelle.
+En première approche, certains ont pensé que l’adresse IP du client pouvait être utilisée par le serveur pour garder la trace du client. Mais très vite, cette solution a été abandonnée (ordinateur partagés par plusieurs client, nomadisme du client…).
+C’est alors que Netscape a imaginé une solution: c’est le cookie (témoin). Les cookies ont été très critiqués mais ils ont été formalisés dans le RFC 2019.
+Un cookie représente un petit fichier (ou une chaîne, string) de 4K octets au plus. Les navigateurs stockent les cookies dans un répertoire réservé à cet effet sur le disque dur du client.
+Il est possible de désactiver cette option sur le navigateur. Les cookies sont des fichiers ne contenant que de l’information et non des programmes exécutables.
+S’ils contiennent un virus, il n’y a pas, en principe, de problème puisqu’ils sont traités comme des données.
+Toutefois il est toujours possible qu’un pirate utilise un bug du navigateur pour provoquer leur activation. Les navigateurs récents prennent en compte ce problème

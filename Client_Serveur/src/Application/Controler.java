@@ -50,11 +50,11 @@ public class Controler {
     private Web web;
 
     public Controler(){
-//        Image.widthProperty().add(imageView.getFitWidth());
-//        Image.heightProperty().add(imageView.getFitHeight());
-        //this.imageView = new ImageView(Image);
-        //imageView.setImage(new Image("Image.jpg"));
-        //imageView = new ImageView(Image);
+//        Reception.widthProperty().add(imageView.getFitWidth());
+//        Reception.heightProperty().add(imageView.getFitHeight());
+        //this.imageView = new ImageView(Reception);
+        //imageView.setImage(new Reception("Reception.jpg"));
+        //imageView = new ImageView(Reception);
     }
 
     @FXML
@@ -70,6 +70,7 @@ public class Controler {
 
     @FXML
     private void getFile() {
+        clearAll();
         String adress, file;
         int port;
         adress = adressField.getText();
@@ -106,6 +107,13 @@ public class Controler {
 
     public void setTextView(String s) {
         this.textAreaField.setText(s);
+    }
+
+    public void clearAll(){
+        this.imageView.setImage(null);
+        this.setTextView("");
+        this.setHeaderReponseField("");
+        this.setHeaderRequeteField("");
     }
 
 

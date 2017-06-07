@@ -3,6 +3,8 @@ package Application;
 import Serveur.ServeurPrimaire;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import static java.lang.Thread.sleep;
@@ -34,9 +36,8 @@ public class Web {
                 String url = "file:///"+System.getProperty("user.dir")+"\\erreur_504.jpeg";
                 controler.setImageView(url);
             }else {
-                String url = "file:///"+System.getProperty("user.dir")+"/src/Image/"+recu[0];
-                System.out.println(url);
-                controler.setImageView(url);
+
+                extensionFile(recu[0], recu[3]);
 
             }
             controler.setHeaderReponseField(recu[1]);
@@ -55,6 +56,54 @@ public class Web {
 
         }
     }
+
+    public void extensionFile(String fichier, String extension)
+    {
+        String url = System.getProperty("user.dir")+"/src/Reception/"+fichier;
+
+        boolean image=false, texte=false, html = false;
+        switch (extension){
+            case "jpg":
+                image = true;
+                break;
+            case "jpeg":
+                image = true;
+                break;
+            case "png":
+                image = true;
+                break;
+            case "html":
+                html = true;
+                break;
+            default:
+                texte = true;
+                break;
+        }
+        //SI C EST UNE IMAGE
+        if (image){
+            url = "file:///"+url;
+            controler.setImageView(url);
+        }else if(html){ //SI C EST UNE PAGE HTML
+
+        }else{ //SINON ON CONSIDERE QUE C EST UN TEXTE
+            File f = new File(url);
+            int size = (int)f.length();
+            byte[] streamBuffer = new byte[size];
+            try {
+                FileInputStream fileInputStream = new FileInputStream(f);
+                fileInputStream.read(streamBuffer);
+                fileInputStream.close();
+                String s = new String(streamBuffer,"UTF-8");
+                controler.setTextView(s);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
     public void chargerImage(String url){
         controler.setImageView(url);
     }
