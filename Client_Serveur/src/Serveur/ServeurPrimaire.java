@@ -1,3 +1,5 @@
+package Serveur;
+
 import java.io.IOException;
 import java.net.*;
 
@@ -8,6 +10,7 @@ public class ServeurPrimaire {
     final static int BUF_SIZE = 1024;
     public  int portEcoute;
     private ServerSocket serverSocket;
+
     public ServeurPrimaire(){
         portEcoute = 2026;
         try {
@@ -21,7 +24,7 @@ public class ServeurPrimaire {
 
         byte [] buffer = new byte[BUF_SIZE];
         try {
-            if (true)
+            while (true)
             {
                 Socket clientSocket = serverSocket.accept();
                 DatagramPacket receivePacket = new DatagramPacket(buffer, buffer.length);
@@ -29,9 +32,8 @@ public class ServeurPrimaire {
                 InetAddress address = receivePacket.getAddress();
                 ServeurHTTP serveurHTTP = new ServeurHTTP(address,clientSocket, portClient);
                 Thread thread = new Thread(serveurHTTP);
+                System.out.println("Lancement du serveur");
                 thread.start();
-
-
             }
         } catch (SocketException e) {
             e.printStackTrace();
@@ -39,5 +41,10 @@ public class ServeurPrimaire {
             e.printStackTrace();
         }
 
+    }
+
+    public static void main(String[] args) {
+        ServeurPrimaire serveurPrimaire = new ServeurPrimaire();
+        serveurPrimaire.lancer();
     }
 }

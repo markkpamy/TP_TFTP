@@ -1,3 +1,7 @@
+package Application;
+
+import Serveur.ServeurPrimaire;
+
 import java.io.IOException;
 
 /**
@@ -12,16 +16,18 @@ public class Web {
     Client client;
 
     public Web(){
-        this.serveurPrimaire = new ServeurPrimaire();
-
+        //this.serveurPrimaire = new ServeurPrimaire();
     }
 
     public void requeteClient(String chemin, String fichier, int port){
-        this.client = new Client();
         System.out.println("On créer le client");
+        this.client = new Client();
         try {
-            this.serveurPrimaire.lancer();
-            client.recevoir(chemin,fichier,port);
+            //this.serveurPrimaire.lancer();
+            String[] recu = client.recevoir(chemin,fichier,port);
+            for(int i=0; i<recu.length; i++)
+                System.out.println(recu[i]);
+            controler.setImageView(recu[0]);
         } catch (IOException e) {
             e.printStackTrace();
         }

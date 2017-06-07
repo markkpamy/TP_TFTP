@@ -7,19 +7,20 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.web.WebView?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.101" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.Controler">
    <children>
       <TabPane layoutY="51.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="349.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
-            <Tab text="Untitled Tab 1">
+            <Tab text="Fichier Recu">
                <content>
-                  <WebView fx:id="requeteView" prefHeight="310.0" prefWidth="600.0" />
+                  <ImageView fx:id="imageView" fitHeight="228.0" fitWidth="283.0" pickOnBounds="true" preserveRatio="true" />
                </content>
             </Tab>
-            <Tab text="Untitled Tab 2">
+            <Tab text="Headers">
                <content>
                   <WebView fx:id="renderView" prefHeight="200.0" prefWidth="200.0" />
                </content>

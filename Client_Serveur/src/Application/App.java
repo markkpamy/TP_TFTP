@@ -1,3 +1,5 @@
+package Application;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -22,7 +24,7 @@ public class App extends Application{
 
     private void intWindow() {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(this.getClass().getResource("Vue.fxml"));
+        loader.setLocation(this.getClass().getResource("../Vue.fxml"));
         try {
             pane = loader.load();
             Controler controler = new Controler();

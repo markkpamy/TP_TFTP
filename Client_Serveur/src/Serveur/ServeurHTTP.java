@@ -1,3 +1,5 @@
+package Serveur;
+
 import java.io.*;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -26,13 +28,15 @@ public class ServeurHTTP implements Runnable{
 
     @Override
     public void run() {
+        System.out.println("Dans le run de sHTTP");
         /**
          * Creation du flux in et out
          */
         DataInputStream inFromClient;
+        DataOutputStream outToClient;
+        //Dans le run de serveur
         try {
             inFromClient = new DataInputStream(clientSocket.getInputStream());
-            DataOutputStream outToClient;
             outToClient = new DataOutputStream(clientSocket.getOutputStream());
             this.recevoir(inFromClient, outToClient);
         } catch (IOException e) {
@@ -42,15 +46,23 @@ public class ServeurHTTP implements Runnable{
 
     public void recevoir(DataInputStream infromClient, DataOutputStream outToClient)
     {
+        System.out.println("Dans recevoir de serveur http");
         String[] input = new String[0];
         try {
-            input = infromClient.readLine().split(" ");
+            System.out.println("Dans la réception entête client");
+            String headerRequete ="";
+
+            headerRequete = infromClient.readLine();
+            //outToClient.flush();
+            //infromClient.close();
+            System.out.println(headerRequete);
+            input = headerRequete.split(" ");
             System.out.println(input[1]);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String[] path = input[1].split("/");
-        String chemin=path[1];
+
+        String chemin=input[1].split("/")[1];
 
         File file = new File(chemin);
         int size = (int) file.length();
@@ -60,36 +72,37 @@ public class ServeurHTTP implements Runnable{
             fichier = new FileInputStream(chemin);
             System.out.println("Fichier trouvé");
             byte buffer[] = new byte[size];
-
+            fichier.read(buffer);
+            fichier.close();
+            System.out.println("Ecriture dans le buffer effectué");
             //On fait le header reponse
             Date date = new Date();
             String lastModified = "Last-Modified"+file.lastModified();
-            String contentLenght = "Content-Lenght:" +size;
+            String contentLength = "Content-Length:" +size;
             String contentType = "Content-Type:"+file.getClass().getTypeName();
-            String header = date+"\n"+lastModified+"\n"+contentLenght+contentType;
+            String header = "HTTP/1.1 200 OK"+"\n"+date+"\n"+lastModified+"\n"+contentLength+"\n"+contentType+"\n\n";
 
-            fichier.read(buffer);
-            fichier.close();
-            String length = "Lenght:"+size;
-            String reponseClient = length;
-            System.out.println("on écrit la taille");
-//            outToClient.writeBytes(reponseClient);
-  //          outToClient.close();
-    //        outToClient.flush();
+
+            System.out.println("on écrit le header");
+            outToClient.writeBytes(header);
+            //outToClient.close();
+            outToClient.flush();
+
+
             System.out.println("On écrite le fichier");
+            //outToClient = new DataOutputStream(clientSocket.getOutputStream());
             outToClient.write(buffer);
+            outToClient.flush();
+            boolean problem = false;
             outToClient.close();
             System.out.println("écriture du fichier finit");
+            //clientSocket.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        try {
-            clientSocket.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
 
     }
 }

@@ -1,7 +1,11 @@
+package Application;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.web.WebView;
 
 /**
@@ -30,9 +34,13 @@ public class Controler {
     @FXML
     Button getButton;
 
+    @FXML
+    ImageView imageView;
+
     private Web web;
     public Controler(){
-
+        Image image = new Image("C:/Users/Fabien/Documents/Projet/arar/TP_TFTP/Client_Serveur/image.jpg");
+        imageView.setImage(image);
     }
 
     @FXML
@@ -64,5 +72,10 @@ public class Controler {
         this.web = web;
     }
 
+    public void setImageView(String url)
+    {
+        Image image = new Image("../image.jpg");
+        imageView.setImage(image);
+    }
 
 }
