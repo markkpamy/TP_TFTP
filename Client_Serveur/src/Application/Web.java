@@ -25,7 +25,10 @@ public class Web {
     public void requeteClient(String chemin, String fichier, int port){
         String[] recu = null;
         try {
-            this.client = new Client();
+            if(port==-1)
+                this.client = new Client(chemin, fichier);
+            else
+                this.client = new Client(chemin,fichier,port);
 
             recu = client.recevoir(chemin,fichier,port);
             if(recu[0].contains("Error-404")){
@@ -51,7 +54,7 @@ public class Web {
             controler.setImageView(url);
             controler.setHeaderRequeteField("GET "+chemin+"/"+fichier+" HTTP/1.1");
             controler.setHeaderReponseField("Erreur 504 Bad-Gateway");
-            controler.setTextView("Impossible de se connecter aux serveurs ! \nAvez vous correctement taper l'adresse ?\nAvez vous lancer le serveur");
+            controler.setTextView("Impossible de se connecter aux serveurs ! \nAvez vous correctement taper l'adresse ?\nAvez vous lancer le serveur ?");
             e.printStackTrace();
 
         }

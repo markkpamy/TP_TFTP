@@ -20,8 +20,19 @@ public class Client {
             adresseIp = java.net.InetAddress.getByName("localhost");
             clientSocket = new Socket(adresseIp, 2026);
 
-            System.out.println("Dans cette erreur ");
+    }
 
+    public Client(String adresseIp, String fichier) throws IOException{
+
+            this.adresseIp = InetAddress.getByName(adresseIp);
+            this.fichier = fichier;
+            clientSocket = new Socket(adresseIp, 2026);
+    }
+
+    public Client(String adresseIp, String fichier, int port)throws IOException {
+        this.adresseIp = InetAddress.getByName(adresseIp);
+        this.fichier = fichier;
+        clientSocket = new Socket(adresseIp, port);
     }
 
     String[] recevoir(String adresse, String fichier, int port) throws IOException {
@@ -33,16 +44,13 @@ public class Client {
         inFromServer = new DataInputStream(clientSocket.getInputStream());
         outToServer = new DataOutputStream(clientSocket.getOutputStream());
 
-        //System.out.println("envoie de la requete");
+
         //On fait le header requete
         String requete = "GET " + adresse + "/" + fichier + " HTTP/1.1" + "\n";
-        //System.out.println("requête côté client : "+requete);
+
+
         outToServer.writeBytes(requete);
         outToServer.flush();
-        //outToServer.close();
-        //outToServer = new DataOutputStream(clientSocket.getOutputStream());
-        //outToServer.close();
-        //System.out.println("la requete a été envoyé");
 
         //Determination de l'header
         String recu = inFromServer.readLine();
